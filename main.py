@@ -18,16 +18,13 @@ class EditDB(QDialog):
                      self.TasteLineEdit.text(), self.PriceLineEdit.text(), self.SizeLineEdit.text()])
         con.commit()
         con.close()
-        self.done(0)
 
 
 class Window(QMainWindow):
     def __init__(self):
         super(Window, self).__init__()
         uic.loadUi("main.ui", self)
-        self.table()
-
-    def table(self):
+        
         con = sqlite3.connect('coffee.sqlite')
         cur = con.cursor()
         cur.execute(f"""SELECT * FROM coffee""")
